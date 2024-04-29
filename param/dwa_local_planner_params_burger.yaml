@@ -1,0 +1,86 @@
+DWAPlannerROS:
+#dwa_local_planner_params_burger.yaml
+# Robot Configuration Parameters
+  max_vel_x: 0.22
+  min_vel_x: -0.22
+
+  max_vel_y: 0.0
+  min_vel_y: 0.0
+
+# The velocity when robot is moving in a straight line
+  max_vel_trans:  0.9  #0.22
+  min_vel_trans:  0.7  #0.11
+
+  max_vel_theta: 2.75
+  min_vel_theta: 1.37
+
+  acc_lim_x: 2.5
+  acc_lim_y: 0.0
+  acc_lim_theta: 3.2 
+
+# Goal Tolerance Parameters
+  xy_goal_tolerance: 0.05
+  yaw_goal_tolerance: 0.17
+  latch_xy_goal_tolerance: false
+
+# Forward Simulation Parameters
+  sim_time: 1.5
+  vx_samples: 20
+  vy_samples: 0
+  vth_samples: 40
+  controller_frequency: 10.0
+
+# Trajectory Scoring Parameters
+  path_distance_bias: 32.0
+  goal_distance_bias: 20.0
+  occdist_scale: 0.02
+  forward_point_distance: 0.325
+  stop_time_buffer: 0.2
+  scaling_speed: 0.25
+  max_scaling_factor: 0.2
+
+# Oscillation Prevention Parameters
+  oscillation_reset_dist: 0.05
+
+# Debugging
+  publish_traj_pc : true
+  publish_cost_grid_pc: true
+
+
+# 이 설정은 ROS의 DWA (Dynamic Window Approach) 로컬 플래너를 위한 구성 파라미터들을 정의합니다. DWA 로컬 플래너는 로봇이 장애물을 피하면서 목표 지점까지 이동하는 동안 안전하고 효율적인 경로를 계산하는 데 사용됩니다. 각 항목의 의미는 아래와 같습니다.
+
+# 로봇 구성 파라미터
+# max_vel_x, min_vel_x: 로봇이 전진할 수 있는 최대 및 최소 x축 속도입니다. 단위는 m/s입니다.
+# max_vel_y, min_vel_y: y축 속도는 로봇이 직접적으로 좌우로 움직일 수 있는 능력을 나타냅니다. 대부분의 로봇에서 이 값은 0으로 설정됩니다.
+# max_vel_trans, min_vel_trans: 로봇이 이동할 수 있는 최대 및 최소 전체 속도입니다. 이는 직선 이동 시 적용됩니다.
+# max_vel_theta, min_vel_theta: 로봇의 최대 및 최소 회전 속도입니다. 단위는 rad/s입니다.
+# acc_lim_x, acc_lim_y, acc_lim_theta: 각각 x, y, theta 방향으로의 최대 가속도입니다.
+# 목표 허용 오차 파라미터
+# xy_goal_tolerance: 목표 위치에 도달했다고 판단할 때 허용되는 최대 x-y 오차입니다. 단위는 미터입니다.
+# yaw_goal_tolerance: 목표 방향(각도)에 도달했다고 판단할 때 허용되는 최대 회전 오차입니다. 단위는 라디안입니다.
+# latch_xy_goal_tolerance: 이 값이 true로 설정되면, x-y 목표에 한 번 도달하면, 목표가 달성된 것으로 간주하고 더 이상의 위치 조정을 하지 않습니다.
+# 전방 시뮬레이션 파라미터
+# sim_time: 경로를 계획할 때 고려하는 시뮬레이션의 시간 길이입니다. 단위는 초입니다.
+# vx_samples, vy_samples, vth_samples: 각각 x, y, theta 방향으로의 속도 샘플 수입니다.
+# controller_frequency: 경로를 계산하는 빈도입니다. 단위는 Hz입니다.
+# 경로 점수 파라미터
+# path_distance_bias, goal_distance_bias, occdist_scale: 각각 경로 거리, 목표 거리, 장애물 거리에 대한 가중치입니다. 이 값들은 경로 점수를 계산할 때 사용됩니다.
+# forward_point_distance: 목표 지점으로부터 얼마나 앞서나가는지를 결정합니다.
+# stop_time_buffer: 정지하기 위해 예비로 두는 시간 버퍼입니다.
+# scaling_speed, max_scaling_factor: 속도에 따라 경로 점수가 조정되는 방식을 결정합니다.
+# 진동 방지 파라미터
+# oscillation_reset_dist: 로봇이 이 거리보다 멀리 이동하지 않으면, 진동으로 간주하고 초기화합니다.
+# 디버깅
+# publish_traj_pc, publish_cost_grid_pc: 각각 경로 계획과 비용 그리드에 대한 포인트 클라우드를 발행할지 여부를 결정합니다. 이는 시각화에 도움이 됩니다.
+# 경로 점수 매기기 매개변수(계속):
+# path_distance_bias: 경로의 길이에 대한 가중치입니다. 높은 값은 길이가 짧은 경로를 선호하도록 합니다.
+# goal_distance_bias: 목표 지점과의 거리에 대한 가중치입니다. 높은 값은 목표에 더 가까운 경로를 선호하도록 합니다.
+# occdist_scale: 장애물과의 거리에 대한 가중치입니다. 높은 값은 장애물로부터 멀리 떨어진 경로를 선호하도록 합니다.
+# forward_point_distance: 로봇이 목표 지점을 향해 나아가는 동안 고려해야 할 앞쪽 포인트까지의 거리를 설정합니다.
+# stop_time_buffer: 로봇이 완전히 멈추기 위해 예약된 시간 버퍼입니다. 이 값은 안전한 정지에 필요한 여유 시간을 제공합니다.
+# scaling_speed, max_scaling_factor: 로봇의 속도에 따라 경로 점수를 조정하는 데 사용됩니다. 이는 로봇이 빠르게 이동할 때 더 보수적인 경로를 선택하게 합니다.
+# 진동 방지 매개변수:
+# oscillation_reset_dist: 로봇이 이 거리보다 더 이동하지 않으면 진동하고 있다고 간주되고, 로봇의 상태가 리셋됩니다. 이는 로봇이 작은 공간에서 불필요하게 움직이는 것을 방지합니다.
+# 디버깅:
+# publish_traj_pc: 이 값이 참일 경우, 계획된 경로에 대한 포인트 클라우드를 발행하여 시각화할 수 있습니다. 이는 로봇이 어떤 경로를 선택했는지 디버깅할 때 유용합니다.
+# publish_cost_grid_pc: 이 값이 참일 경우, 비용 그리드에 대한 포인트 클라우드를 발행합니다. 이는 장애물과의 거리를 고려한 비용 계산을 시각화하는 데 도움을 줍니다.

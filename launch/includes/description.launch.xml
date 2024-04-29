@@ -1,0 +1,9 @@
+<!--description.launch.xml-->
+<launch>
+  
+
+  <arg name="model"/>
+  <!-- URDF 파일을 xacro 명령으로 처리하기 위해 command 속성을 변경합니다. -->
+  <param name="robot_description" command="$(find xacro)/xacro $(find robot_model_pkg)/urdf/robot.xacro" />
+
+</launch>

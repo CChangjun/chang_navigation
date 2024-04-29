@@ -1,0 +1,31 @@
+obstacle_range: 3.0
+raytrace_range: 3.5
+#costmap_common_params_burger.yaml
+footprint: [[-0.105, -0.105], [-0.105, 0.105], [0.041, 0.105], [0.041, -0.105]]
+#robot_radius: 0.105
+
+inflation_radius: 1.0
+cost_scaling_factor: 3.0
+
+map_type: costmap
+observation_sources: scan
+scan: {sensor_frame: base_scan, data_type: LaserScan, topic: scan, marking: true, clearing: true}
+
+# 이 구성은 ROS (Robot Operating System)의 costmap 설정과 관련이 있으며, 특히 costmap_common_params_burger.yaml 파일에 정의된 내용입니다. 이 파일은 로봇이 환경에서 장애물을 인식하고 회피하기 위해 사용하는 costmap의 공통 파라미터를 설정합니다. 여기에는 장애물 감지 범위, 로봇의 물리적 형태(footprint), 장애물 주변으로의 비용 확산에 관한 설정이 포함됩니다.
+
+# obstacle_range: 3.0
+# 로봇이 장애물을 감지하는 최대 거리(미터 단위). 이 거리 안에 있는 장애물만 고려됩니다.
+# raytrace_range: 3.5
+# 센서 데이터를 이용해 장애물이 없는 공간을 맵에 업데이트하는 데 사용되는 최대 거리(미터 단위).
+# footprint:
+# 로봇의 물리적인 형태를 나타내는 다각형의 꼭짓점 목록입니다. 이것은 로봇이 차지하는 공간을 나타내며, 장애물 회피 계산에 사용됩니다.
+# inflation_radius: 1.0
+# 장애물 주변에 설정되는 비용 확산의 반경(미터 단위). 이 반경 내의 공간은 로봇이 접근하지 않도록 비용이 증가합니다.
+# cost_scaling_factor: 3.0
+# 비용 확산 시 사용되는 확장 비율. 높을수록 장애물 주변으로 더 높은 비용이 확산됩니다.
+# map_type: costmap
+# 이 설정은 costmap을 사용함을 나타냅니다.
+# observation_sources: scan
+# 장애물 정보를 얻기 위해 사용되는 센서의 유형입니다. 여기서는 "scan"이 지정되어 있습니다.
+# scan:
+# 센서 설정에 관한 상세 정보입니다. sensor_frame은 센서의 프레임 ID, data_type은 센서 데이터의 유형(LaserScan), topic은 센서 데이터가 게시되는 ROS 토픽 이름, marking과 clearing은 각각 장애물을 표시하고, 맵에서 장애물을 제거하는 작업을 활성화하는지 여부를 나타냅니다.
